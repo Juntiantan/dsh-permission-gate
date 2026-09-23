@@ -1,6 +1,6 @@
 {
   "name": "dsh-permission-gate",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "UI-level access gate + process-wide agent tool brake for DeepSeek Harness: shared session, strict 60-minute idle lock, native settings module. NOT server-side authentication.",
   "type": "module",
   "main": "lib/index.js",
@@ -9,9 +9,13 @@
     "./client": {
       "default": "./lib/client.js"
     },
+    "./cordis.patch.yml": "./cordis.patch.yml",
     "./package.json": "./package.json"
   },
   "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
     "client": {
       "inject": [
         "@deepseek-ai/dsh-client-runtime"
@@ -23,6 +27,7 @@
     "lib/index.js",
     "lib/ui.js",
     "lib/client.js",
+    "cordis.patch.yml",
     "smoke-test.mjs",
     "README.md",
     "README.zh.md",
@@ -37,6 +42,7 @@
     "cordis",
     "cordis-plugin",
     "dsh-plugin",
+    "dsh-bundle",
     "permission-gate",
     "lock-screen",
     "idle-timeout",

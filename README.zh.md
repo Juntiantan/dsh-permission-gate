@@ -51,13 +51,16 @@ harness 自己的源码是这么描述它那道请求围栏的：
 
 ## 安装
 
+本包声明了 `dsh.bundle`，所以它是一个 **profile layer**：**装就是一行命令**，
+组合由 DSH 自动对账，**没有需要你手改的补丁文件**。
+
 ```bash
-# 1. 装进你的 profile（out-of-tree 插件，从 profile 自己的 node_modules 解析）
 dsh plugin --profile web add dsh-permission-gate
 
-# 2. 往 profile 的 composition 补丁里加一行
-#    ~/.dsh/profiles/web/cordis.patch.yml
+# 重启 DSH 一次 —— 客户端名单只在启动时扫描
 ```
+
+bundle 会自己插入这一行（见 [`cordis.patch.yml`](./cordis.patch.yml)）：
 
 ```yaml
 - insert:
@@ -65,9 +68,9 @@ dsh plugin --profile web add dsh-permission-gate
       name: dsh-permission-gate
 ```
 
-```bash
-# 3. 重启 DSH —— 客户端名单只在启动时扫描一次
-```
+> **从手动安装迁移过来的？** 请先把你**自己**的
+> `~/.dsh/profiles/web/cordis.patch.yml` 里同样那一行删掉 ——
+> 现在由 bundle 插入，同一个 `id` 出现两次会冲突。
 
 下一次页面加载就会出现锁页。首次访问让你**设置**口令，之后每次让你**输入**口令。
 

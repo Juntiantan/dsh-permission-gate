@@ -1,0 +1,15 @@
+# dsh-permission-gate —— bundle 层（profile layer）
+#
+# 这个文件的作用：让本包成为「声明了 dsh.bundle 的插件」。
+# 装进某个 profile 之后，dsh 会自动对账，把下面这一行挂进组合里 ——
+# 你不需要再手动编辑自己的 cordis.patch.yml。
+#
+# 本层叠加在你的 cordis.patch.yml 之上。想改动默认行为，就在你自己的补丁层里
+# 写一条同 id 的规则覆盖它。
+#
+# ⚠️ 从手动安装迁移过来的人：请把自己 cordis.patch.yml 里那条同 id 的
+#    `- insert:` / `id: permission-gate` 删掉，否则同一个 id 会出现两次。
+
+- insert:
+    - id: permission-gate
+      name: dsh-permission-gate

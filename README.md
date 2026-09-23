@@ -66,13 +66,16 @@ problem.
 
 ## Install
 
+This package declares `dsh.bundle`, so it is a **profile layer**: installing it is one
+command, and DSH reconciles the composition for you. There is no patch file to edit.
+
 ```bash
-# 1. install into your profile (out-of-tree plugin, resolved from its own node_modules)
 dsh plugin --profile web add dsh-permission-gate
 
-# 2. add a row to your profile's composition patch
-#    ~/.dsh/profiles/web/cordis.patch.yml
+# restart DSH once — the client roster is scanned at startup
 ```
+
+The bundle inserts this row on its own (see [`cordis.patch.yml`](./cordis.patch.yml)):
 
 ```yaml
 - insert:
@@ -80,9 +83,9 @@ dsh plugin --profile web add dsh-permission-gate
       name: dsh-permission-gate
 ```
 
-```bash
-# 3. restart DSH — the client roster is scanned once at startup
-```
+> **Migrating from a manual install?** Delete that same row from *your own*
+> `~/.dsh/profiles/web/cordis.patch.yml` first. The bundle now inserts it, and two
+> entries sharing one `id` will collide.
 
 On the next page load you get the lock page. The first visit asks you to
 **set** a password; every visit after that asks you to **enter** it.
