@@ -1,0 +1,62 @@
+{
+  "name": "dsh-permission-gate",
+  "version": "1.1.0",
+  "description": "UI-level access gate + process-wide agent tool brake for DeepSeek Harness: shared session, strict 60-minute idle lock, native settings module. NOT server-side authentication.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ],
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib/index.js",
+    "lib/ui.js",
+    "lib/client.js",
+    "smoke-test.mjs",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node smoke-test.mjs"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "cordis-plugin",
+    "dsh-plugin",
+    "permission-gate",
+    "lock-screen",
+    "idle-timeout",
+    "tool-guard"
+  ],
+  "license": "MIT",
+  "author": "juntiantan (https://github.com/juntiantan)",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juntiantan/dsh-permission-gate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/juntiantan/dsh-permission-gate/issues"
+  },
+  "homepage": "https://github.com/juntiantan/dsh-permission-gate#readme"
+}

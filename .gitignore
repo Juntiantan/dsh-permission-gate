@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# logs
+*.log
+logs/
+
+# package artifacts
+*.tgz
+dist/
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# runtime state — NEVER commit credentials
+permission-gate.json
+*.local
+.env
+.env.*

@@ -1,0 +1,17 @@
+# 换行符统一：仓库里一律存 LF，检出时按平台自动处理。
+# 这样 Windows / macOS / Linux 协作时不会产生整文件 diff 噪音。
+* text=auto eol=lf
+
+# Windows 专用的批处理必须保留 CRLF，否则可能无法执行
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# 二进制文件不参与换行转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
